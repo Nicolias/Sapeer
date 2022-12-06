@@ -68,7 +68,7 @@ public class Minefield : MonoBehaviour
             for (int j = 0; j < _minefieldColumn; j++)
             {
                 minefieldGrid[i, j] = transform.GetChild(c).GetComponent<Cell>();
-                minefieldGrid[i, j].SetCellIndex((i, j));
+                minefieldGrid[i, j].CellIndex = (i, j);
 
                 c++;
             }

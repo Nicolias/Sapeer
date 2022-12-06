@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public abstract class Cell : MonoBehaviour, IPointerClickHandler
 {
     private bool _isBlocked;
-    public bool IsBlocked => _isBlocked;
+
+    private bool _isOpened;
+    public bool IsOpened => _isOpened;
 
     protected Button CellButton;
-    protected (int, int) Index;
+    public (int, int) CellIndex { get; set; }
 
     public Minefield Minefield { get; set; }
 
@@ -18,6 +20,20 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         CellButton = GetComponent<Button>();
     }
 
+    public void OpenCell()
+    {
+        if (_isOpened)
+            return;
+
+        _isOpened = true;
+
+        CellButton.interactable = false;
+
+        OpeningCell();
+    }
+
+    protected abstract void OpeningCell();
+
     private void ChangeBlockState()
     {
         _isBlocked = !_isBlocked;
@@ -25,17 +41,10 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         CellButton.image.color = _isBlocked ? Color.gray : Color.white;
     }
 
-    protected abstract void OpenCell();
-
-    public void SetCellIndex((int, int) index)
-    {
-        Index = index;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if (CellButton.interactable == false)
-        //    return;
+        if (CellButton.interactable == false)
+            return;
 
         if (eventData.button == PointerEventData.InputButton.Right)
             ChangeBlockState();

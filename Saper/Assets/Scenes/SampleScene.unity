@@ -12115,7 +12115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minefieldRow: 8
   _minefieldColumn: 8
-  _mineCount: 5
+  _mineCount: 10
 --- !u!114 &1577102648
 MonoBehaviour:
   m_ObjectHideFlags: 0

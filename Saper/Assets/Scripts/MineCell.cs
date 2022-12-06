@@ -2,7 +2,7 @@
 
 public class MineCell : Cell
 {
-    protected override void OpenCell()
+    protected override void OpeningCell()
     {
         Debug.Log("Game Over");
         CellButton.image.color = Color.red;
