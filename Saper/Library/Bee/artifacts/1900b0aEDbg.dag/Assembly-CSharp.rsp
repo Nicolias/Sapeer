@@ -370,6 +370,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Cell.cs"
 "Assets/Scripts/EmptyCell.cs"
+"Assets/Scripts/GameStateMachine.cs"
 "Assets/Scripts/MineCell.cs"
 "Assets/Scripts/Minefield.cs"
 -langversion:9.0

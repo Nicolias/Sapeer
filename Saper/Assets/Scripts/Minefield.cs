@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class Minefield : MonoBehaviour
 {
-    [SerializeField] int _minefieldRow, _minefieldColumn;
+    [SerializeField] private Button _resetButton, _buttonTemplate;
+    [SerializeField] private int _minefieldRow, _minefieldColumn;
+
     public int MinefieldRow => _minefieldRow;
     public int MinefieldColumn => _minefieldColumn;
 
@@ -18,9 +20,44 @@ public class Minefield : MonoBehaviour
 
     private void Awake()
     {
-        _cellsTemplate = transform.GetComponentsInChildren<Button>();
+        CreateNewMinefield();
+    }
+
+    private void OnEnable()
+    {
+        _resetButton.onClick.AddListener(ResetMinefield);
+    }
+
+    private void OnDisable()
+    {
+        _resetButton.onClick.AddListener(ResetMinefield);
+    }
+
+    private void ResetMinefield()
+    {
+        foreach (var cell in Cells)
+            cell.Reset();
+
         ShuffleCells();
+        _cells = GetMinefieldGrid();
+    }
+
+    private void CreateNewMinefield()
+    {
+        List<Button> newCells = new();
+
+        for (int i = 0; i < _minefieldRow; i++)
+        {
+            for (int j = 0; j < _minefieldColumn; j++)
+            {
+                newCells.Add(Instantiate(_buttonTemplate, transform));
+            }
+        }
+
+        _cellsTemplate = newCells.ToArray();
+
         SetCellsComponent(_cellsTemplate, _mineCount);
+        ShuffleCells();
         _cells = GetMinefieldGrid();
     }
 
@@ -30,11 +67,11 @@ public class Minefield : MonoBehaviour
 
         for (int i = _cellsTemplate.Length - 1; i >= 1; i--)
         {
-            int j = random.Next(i + 1);
+            int j = random.Next(i + 1);            
             
-            var temp = _cellsTemplate[j];
-            _cellsTemplate[j] = _cellsTemplate[i];
-            _cellsTemplate[i] = temp;
+            var temp = _cellsTemplate[j].transform.GetSiblingIndex();
+            _cellsTemplate[j].transform.SetSiblingIndex(i);
+            _cellsTemplate[i].transform.SetSiblingIndex(temp);
         }
     }
 

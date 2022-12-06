@@ -11,6 +11,14 @@ public class EmptyCell : Cell
         _numberClosestMineText = GetComponentInChildren<TMP_Text>();   
     }
 
+    public override void Reset()
+    {
+        base.Reset();
+
+        _numberClosestMine = 0;
+        _numberClosestMineText.text = "";
+    }
+
     protected override void OpeningCell()
     {
         CellButton.image.color = Color.green;
@@ -18,7 +26,7 @@ public class EmptyCell : Cell
         CalculateNumberClosestMine();
 
         if (_numberClosestMine == 0)
-            OpenClosesCells();
+            OpenClosestCells();
         else
             _numberClosestMineText.text = _numberClosestMine.ToString();
     }
@@ -38,7 +46,7 @@ public class EmptyCell : Cell
         }
     }
 
-    private void OpenClosesCells()
+    private void OpenClosestCells()
     {
         for (int i = CellIndex.Item1 - 1; i <= CellIndex.Item1 + 1; i++)
         {

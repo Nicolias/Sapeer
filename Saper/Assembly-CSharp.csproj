@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\EmptyCell.cs" />
     <Compile Include="Assets\Scripts\MineCell.cs" />
     <Compile Include="Assets\Scripts\Minefield.cs" />
+    <Compile Include="Assets\Scripts\GameStateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
