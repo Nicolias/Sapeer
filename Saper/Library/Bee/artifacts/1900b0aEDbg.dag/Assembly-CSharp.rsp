@@ -368,11 +368,14 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
-"Assets/Scripts/Cell.cs"
-"Assets/Scripts/EmptyCell.cs"
-"Assets/Scripts/GameStateMachine.cs"
-"Assets/Scripts/MineCell.cs"
-"Assets/Scripts/Minefield.cs"
+"Assets/Scripts/AudioServise.cs"
+"Assets/Scripts/Game State Machine/GameStateMachine.cs"
+"Assets/Scripts/Minefield Window/Cell.cs"
+"Assets/Scripts/Minefield Window/EmptyCell.cs"
+"Assets/Scripts/Minefield Window/MineCell.cs"
+"Assets/Scripts/Minefield Window/Minefield.cs"
+"Assets/Scripts/Minefield Window/MinefieldWindow.cs"
+"Assets/Scripts/Start Window/StartWindow.cs"
 -langversion:9.0
 
 /deterministic
