@@ -20,6 +20,14 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         CellButton = GetComponent<Button>();
     }
    
+    public virtual void Reset()
+    {
+        _isBlocked = false;
+        _isOpened = false;
+        CellButton.image.color = Color.white;
+        CellButton.interactable = true;
+    }
+
     public void OpenCell()
     {
         if (_isOpened)
@@ -30,14 +38,6 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         CellButton.interactable = false;
 
         OpeningCell();
-    }
-
-    public virtual void Reset()
-    {
-        _isBlocked = false;
-        _isOpened = false;
-        CellButton.image.color = Color.white;
-        CellButton.interactable = true;
     }
 
     protected abstract void OpeningCell();

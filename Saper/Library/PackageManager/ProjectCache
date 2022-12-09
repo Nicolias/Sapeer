@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638056882098368615
-    m_Hash: 3779424492
+      ticks: 638061988462690996
+    m_Hash: 1020184561
   m_LockFileStatus:
     m_FilePath: D:/UnityProject/Sapeer/Saper/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638056882098467968
-    m_Hash: 3561222424
+      ticks: 638061988462805589
+    m_Hash: 665447733
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,56 @@ m_LocalPackages:
 m_ProjectPath: D:/UnityProject/Sapeer/Saper/Packages
 m_EditorVersion: 2021.3.1f1 (3b70a0754835)
 m_ResolvedPackages:
+- packageId: com.boundfoxstudios.fluentassertions@https://github.com/BoundfoxStudios/fluentassertions-unity.git#upm
+  testable: 1
+  isDirectDependency: 1
+  version: 6.6.0
+  source: 5
+  resolvedPath: D:\UnityProject\Sapeer\Saper\Library\PackageCache\com.boundfoxstudios.fluentassertions@7357551604
+  assetPath: Packages/com.boundfoxstudios.fluentassertions
+  name: com.boundfoxstudios.fluentassertions
+  displayName: FluentAssertions
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: tests
+  description: 'This package adds a support for Fluent Assertions to Unity to write
+    better maintainable unit tests.
+
+
+    For more information about Fluent Assertions,
+    please visit https://fluentassertions.com'
+  status: 4
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.15.15
   testable: 0
   isDirectDependency: 1
@@ -329,12 +379,14 @@ m_ResolvedPackages:
     - 3.0.14
     - 3.0.15
     - 3.0.16
+    - 3.0.17
     compatible:
     - 3.0.13
     - 3.0.14
     - 3.0.15
     - 3.0.16
-    verified: 3.0.16
+    - 3.0.17
+    verified: 3.0.17
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -403,11 +455,13 @@ m_ResolvedPackages:
     - 2.0.14
     - 2.0.15
     - 2.0.16
+    - 2.0.17
     compatible:
     - 2.0.14
     - 2.0.15
     - 2.0.16
-    verified: 2.0.16
+    - 2.0.17
+    verified: 2.0.17
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -1087,10 +1141,12 @@ m_ResolvedPackages:
     - 1.7.7
     - 1.7.8
     - 1.8.0-pre.1
+    - 1.8.0
     compatible:
     - 1.7.6
     - 1.7.7
     - 1.7.8
+    - 1.8.0
     verified: 1.7.8
   dependencies:
   - name: com.unity.ugui
@@ -3753,6 +3809,7 @@ m_ResolvedPackages:
     - 1.4.3
     - 1.5.2
     - 1.6.0
+    - 1.7.0
     compatible:
     - 1.0.1
     - 1.1.0-pre.7
@@ -3771,6 +3828,7 @@ m_ResolvedPackages:
     - 1.4.3
     - 1.5.2
     - 1.6.0
+    - 1.7.0
     verified: 1.0.1
   dependencies:
   - name: com.unity.modules.unitywebrequest

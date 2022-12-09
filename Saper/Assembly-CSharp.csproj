@@ -59,11 +59,11 @@
     <Compile Include="Assets\Scripts\Minefield Window\Cell.cs" />
     <Compile Include="Assets\Scripts\Minefield Window\EmptyCell.cs" />
     <Compile Include="Assets\Scripts\Minefield Window\MineCell.cs" />
+    <Compile Include="Assets\Scripts\AudioServise.cs" />
+    <Compile Include="Assets\Scripts\Game State Machine\GameStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Minefield Window\MinefieldWindow.cs" />
     <Compile Include="Assets\Scripts\Minefield Window\Minefield.cs" />
     <Compile Include="Assets\Scripts\Start Window\StartWindow.cs" />
-    <Compile Include="Assets\Scripts\Minefield Window\MinefieldWindow.cs" />
-    <Compile Include="Assets\Scripts\Game State Machine\GameStateMachine.cs" />
-    <Compile Include="Assets\Scripts\AudioServise.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -23,7 +23,7 @@ public class Minefield : MonoBehaviour
 
     private void OnEnable()
     {
-        CreateNewMinefield();
+        CreateNewMinefieldCells();
     }
 
     private void OnDisable()
@@ -44,7 +44,7 @@ public class Minefield : MonoBehaviour
         _cells = GetMinefieldGrid();
     }
 
-    private void CreateNewMinefield()
+    private void CreateNewMinefieldCells()
     {
         List<Button> newCells = new();
 
@@ -52,10 +52,37 @@ public class Minefield : MonoBehaviour
             for (int j = 0; j < _minefieldColumn; j++)
                 newCells.Add(Instantiate(_cellTemplate, transform));
 
-        SetCellsComponent(newCells.ToArray(), _mineCount);
+        CreateCellsOfButton(newCells.ToArray(), _mineCount);
         ShuffleCells(newCells.ToArray());
         _cells = GetMinefieldGrid();
     }
+
+    private void CreateCellsOfButton(Button[] futureCells, int mineCount)
+    {
+        if (mineCount > futureCells.Length) throw new InvalidOperationException
+                ("Колличество бомб не может быть больше колличества ячеек");
+
+        int c = 0;
+        for (int i = 0; i < _minefieldRow; i++)
+        {
+            for (int j = 0; j < _minefieldColumn; j++)
+            {
+                if (c < mineCount)
+                {
+                    MineCell newCell = futureCells[c].gameObject.AddComponent<MineCell>();
+                    _mineCellsCollection.Add(newCell);
+                    newCell.Minefield = this;
+                    newCell.OnMineExploded += StartGameOver;
+                }
+                else
+                {
+                    futureCells[c].gameObject.AddComponent<EmptyCell>().Minefield = this;
+                }
+
+                c++;
+            }
+        }
+    }   
 
     private void ShuffleCells(Button[] newCells)
     {
@@ -70,33 +97,6 @@ public class Minefield : MonoBehaviour
             newCells[i].transform.SetSiblingIndex(temp);
         }
     }
-
-    private void SetCellsComponent(Button[] newCells, int mineCount)
-    {
-        if (mineCount > newCells.Length) throw new InvalidOperationException
-                ("Колличество бомб не может быть больше колличества ячеек");
-
-        int c = 0;
-        for (int i = 0; i < _minefieldRow; i++)
-        {
-            for (int j = 0; j < _minefieldColumn; j++)
-            {
-                if (c < mineCount)
-                {
-                    MineCell newCell = newCells[c].gameObject.AddComponent<MineCell>();
-                    _mineCellsCollection.Add(newCell);
-                    newCell.Minefield = this;
-                    newCell.OnMineExploded += StartGameOver;
-                }
-                else
-                {
-                    newCells[c].gameObject.AddComponent<EmptyCell>().Minefield = this;
-                }
-
-                c++;
-            }
-        }
-    }   
 
     private Cell[,] GetMinefieldGrid()
     {
