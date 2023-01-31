@@ -629,6 +629,7 @@ MonoBehaviour:
   _startWindow: {fileID: 473174391}
   _minefield: {fileID: 1577102647}
   _gameOverPanel: {fileID: 309885908}
+  _cellTemplate: {fileID: 8751259505581123707, guid: ce3655bcdc4069640a12105c1b8cd9ba, type: 3}
 --- !u!1 &764595267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,10 +1290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionSound: {fileID: 1577102652}
-  _minefieldRow: 8
-  _minefieldColumn: 8
   _mineCount: 15
-  _cellTemplate: {fileID: 8751259505581123707, guid: ce3655bcdc4069640a12105c1b8cd9ba, type: 3}
 --- !u!114 &1577102648
 MonoBehaviour:
   m_ObjectHideFlags: 0

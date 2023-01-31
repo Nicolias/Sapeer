@@ -10,8 +10,12 @@ public class MinefieldWindow : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverPanel;
 
+    [SerializeField] private Button _cellTemplate;
+
     private void OnEnable()
     {
+        _minefield.CreateNewMinefieldCells(8, 8, 8, _cellTemplate);
+
         _minefield.OnGameOver += StartGameOver;
 
         _exitButton.onClick.AddListener(RemoveToStartWindow);

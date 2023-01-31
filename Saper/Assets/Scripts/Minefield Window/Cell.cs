@@ -20,14 +20,6 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         CellButton = GetComponent<Button>();
     }
    
-    public virtual void Reset()
-    {
-        _isBlocked = false;
-        _isOpened = false;
-        CellButton.image.color = Color.white;
-        CellButton.interactable = true;
-    }
-
     public void OpenCell()
     {
         if (_isOpened)
@@ -40,15 +32,6 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
         OpeningCell();
     }
 
-    protected abstract void OpeningCell();
-
-    private void ChangeBlockState()
-    {
-        _isBlocked = !_isBlocked;
-
-        CellButton.image.color = _isBlocked ? Color.gray : Color.white;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         if (CellButton.interactable == false)
@@ -59,5 +42,22 @@ public abstract class Cell : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left && _isBlocked == false)
             OpenCell();
+    }
+
+    public virtual void Reset()
+    {
+        _isBlocked = false;
+        _isOpened = false;
+        CellButton.image.color = Color.white;
+        CellButton.interactable = true;
+    }
+
+    protected abstract void OpeningCell();
+
+    private void ChangeBlockState()
+    {
+        _isBlocked = !_isBlocked;
+
+        CellButton.image.color = _isBlocked ? Color.gray : Color.white;
     }
 }

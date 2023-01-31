@@ -6,6 +6,8 @@ public class EmptyCell : Cell
     private TMP_Text _numberClosestMineText;
     private int _numberClosestMine;
 
+    public int NumberClosestMine => _numberClosestMine;
+
     private void Start()
     {
         _numberClosestMineText = GetComponentInChildren<TMP_Text>();   
@@ -25,10 +27,16 @@ public class EmptyCell : Cell
 
         CalculateNumberClosestMine();
 
-        if (_numberClosestMine == 0)
-            OpenClosestCells();
-        else
+        if (_numberClosestMineText == null)
+        {
+            Debug.Log("Негде отображать число ближайших мин");
+            return;
+        }
+
+        if (_numberClosestMine != 0)
             _numberClosestMineText.text = _numberClosestMine.ToString();
+        else
+            OpenClosestCells();
     }
 
     private void CalculateNumberClosestMine()

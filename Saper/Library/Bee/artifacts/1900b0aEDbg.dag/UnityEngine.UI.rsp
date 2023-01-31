@@ -122,6 +122,10 @@
 -define:PACKAGE_UITOOLKIT
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/NuGet/Editor/NugetForUnity.dll"
+-r:"Assets/Packages/Castle.Core.5.0.0/lib/netstandard2.0/Castle.Core.dll"
+-r:"Assets/Packages/NSubstitute.4.4.0/lib/netstandard2.0/NSubstitute.dll"
+-r:"Assets/Packages/System.Diagnostics.EventLog.4.7.0/lib/netstandard2.0/System.Diagnostics.EventLog.dll"
 -r:"D:/Unity/2021.3.1f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Unity/2021.3.1f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Unity/2021.3.1f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"

@@ -9,9 +9,8 @@ public class Minefield : MonoBehaviour
 
     [SerializeField] private AudioSource _explosionSound;
 
-    [SerializeField] private int _minefieldRow, _minefieldColumn, _mineCount;
-
-    [SerializeField] private Button _cellTemplate;
+    private int _mineCount;
+    private int _minefieldRow, _minefieldColumn;
 
     private List<MineCell> _mineCellsCollection = new();
 
@@ -20,11 +19,6 @@ public class Minefield : MonoBehaviour
 
     private Cell[,] _cells;
     public Cell[,] Cells => _cells;
-
-    private void OnEnable()
-    {
-        CreateNewMinefieldCells();
-    }
 
     private void OnDisable()
     {
@@ -35,25 +29,48 @@ public class Minefield : MonoBehaviour
             Destroy(child.gameObject);
     }
 
+    public void CreateNewMinefieldCells(int minefieldRow, int minefieldColumn, int mineCount, Button cellTemplate)
+    {
+        _mineCount = mineCount;
+        _minefieldColumn = minefieldColumn;
+        _minefieldRow = minefieldRow;
+
+        List<Button> newCells = new();
+
+        for (int i = 0; i < _minefieldRow; i++)
+            for (int j = 0; j < _minefieldColumn; j++)
+                newCells.Add(Instantiate(cellTemplate, transform));
+
+        CreateCellsOfButton(newCells.ToArray(), _mineCount);
+        ShuffleCells(newCells.ToArray());
+        _cells = GetMinefieldGrid();
+    }
+
+    public void PastCellsGridTemplate(Cell[,] cellsTemplate)
+    {
+        _cells = cellsTemplate;
+        _minefieldRow = _cells.GetLength(0);
+        _minefieldColumn = _cells.GetLength(1);
+
+        _mineCellsCollection = new();
+        _mineCount = 0;
+
+        foreach (Cell cellTemplate in cellsTemplate)
+        {
+            if (cellTemplate is MineCell)
+            {
+                _mineCellsCollection.Add((MineCell)cellTemplate);
+                _mineCount++;
+            }
+        }
+    }
+
     public void ResetMinefield()
     {
         foreach (var cell in Cells)
             cell.Reset();
 
         ShuffleCells(transform.GetComponentsInChildren<Button>());
-        _cells = GetMinefieldGrid();
-    }
-
-    private void CreateNewMinefieldCells()
-    {
-        List<Button> newCells = new();
-
-        for (int i = 0; i < _minefieldRow; i++)
-            for (int j = 0; j < _minefieldColumn; j++)
-                newCells.Add(Instantiate(_cellTemplate, transform));
-
-        CreateCellsOfButton(newCells.ToArray(), _mineCount);
-        ShuffleCells(newCells.ToArray());
         _cells = GetMinefieldGrid();
     }
 
